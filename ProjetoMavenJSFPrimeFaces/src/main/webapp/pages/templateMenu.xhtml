@@ -3,9 +3,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	lang="#{localeBean.language}"
+	>
 
-<f:view encoding="ISO-8859-1">
+<f:view locale="#{localeBean.locale}">
 	<h:head>
 
 		<style> .ui-datagrid-no-border .ui-datagrid-content { border: none; } </style>
@@ -24,7 +26,7 @@
 		<p:layout id="globalLayout" fullPage="true">
 
 
-			<p:layoutUnit position="north" size="160">
+			<p:layoutUnit position="north" size="160" >
 				<ui:include src="comuns/cabecalho.xhtml" />
 			</p:layoutUnit>
 

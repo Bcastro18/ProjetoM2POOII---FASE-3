@@ -5,16 +5,21 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:form>
 		<p:panelMenu>
-		    <p:submenu label="#{msg['pages.comuns.menuLateral.inicio']}">
-			   <p:menuitem value="Início" url="inicio.xhtml" />
+		    <p:submenu label="#{msg['pages.comuns.menuLateral.inicio']}" >
+			   <p:menuitem value="#{msg['pages.inicio.menu']}" url="inicio.xhtml" />
 			</p:submenu>
 		
 			<p:submenu label="#{msg['pages.comuns.menuLateral.gerencial']}">
-				<p:menuitem value="Tela 1" url="tela1.xhtml" />
-				<p:menuitem value="Tela 2" url="tela2.xhtml" />
-				<p:menuitem value="Tela 3" url="tela3.xhtml" />
+				<p:menuitem value="#{msg['pages.tela1.menu']}" url="tela1.xhtml" />
+				<p:menuitem value="#{msg['pages.tela2.menu']}" url="tela2.xhtml" />
+				<p:menuitem value="#{msg['pages.tela3.menu']}" url="tela3.xhtml" />
 	       </p:submenu>
 					
+			<p:submenu label="#{msg['pages.comuns.menuLateral.options']}">
+				<p:menuitem value="#{msg['pages.linguagem.menu']}" url="linguagem.xhtml" />
+	       </p:submenu>
+		
 		</p:panelMenu>
 	</h:form>
 </ui:composition>
+
