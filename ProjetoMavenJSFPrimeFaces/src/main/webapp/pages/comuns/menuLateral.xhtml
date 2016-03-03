@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<p:panelMenu>
+		    <p:submenu label="#{msg['pages.comuns.menuLateral.inicio']}">
+			   <p:menuitem value="Início" url="inicio.xhtml" />
+			</p:submenu>
+		
+			<p:submenu label="#{msg['pages.comuns.menuLateral.gerencial']}">
+				<p:menuitem value="Tela 1" url="tela1.xhtml" />
+				<p:menuitem value="Tela 2" url="tela2.xhtml" />
+				<p:menuitem value="Tela 3" url="tela3.xhtml" />
+	       </p:submenu>
+					
+		</p:panelMenu>
+	</h:form>
+</ui:composition>

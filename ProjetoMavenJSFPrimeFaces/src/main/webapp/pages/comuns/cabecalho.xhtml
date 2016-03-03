@@ -1,0 +1,17 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:panelGrid columns="1">
+	
+		<p:graphicImage 
+					    library="sistema" 
+						name="imagens/logo.png"
+						alt="#{msg['pages.comuns.cabecalho.img.alt']}" 
+						title="#{msg['pages.comuns.cabecalho.img.title']}" />
+						
+		<p:outputLabel value="#{msg['pages.comuns.cabecalho.headerText']}" />
+		
+	</h:panelGrid>
+</ui:composition>
