@@ -9,22 +9,24 @@
 	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
 	
 	<ui:define name="title">
-		<h:outputText value="#{msg['pages.tela1.title']}" />
+		<h:outputText value="#{msg['pages.cadastroAluno.title']}" />
 	</ui:define>
 	
 
 	<ui:define name="principal">
 	  
+	  <h1><p:outputLabel value="#{msg['pages.cadastroAluno.menu']}"/></h1>
+	  
 	  <h:form id="formAluno">	
 	  <p:panelGrid columns="2">
-      <p:outputLabel value="Matricula:" />
+      <p:outputLabel value="#{msg['pages.cadastroAluno.matricula']}" />
       <p:inputText value="#{alunoManagedBean.aluno.matricula}"/>
-	  <p:outputLabel value="Nome:" />
+	  <p:outputLabel value="#{msg['pages.cadastroAluno.nome']}" />
       <p:inputText value="#{alunoManagedBean.aluno.nome}"/>
-      <p:outputLabel value="Curso:" />
+      <p:outputLabel value="#{msg['pages.cadastroAluno.curso']}" />
       <p:inputText value="#{alunoManagedBean.aluno.curso}"/>
 	  </p:panelGrid>
-	  <p:commandButton value="Salvar" 
+	  <p:commandButton value="#{msg['pages.cadastroAluno.btnSalvar']}" 
 	                 action="#{alunoManagedBean.salvar}"
 	                 update=":formAluno, :tabelaAluno"
 	                 />
@@ -34,13 +36,13 @@
                 var="aux"
                 id="tabelaAluno"
    >
-      <p:column headerText="Matrícula">
+      <p:column headerText="#{msg['pages.cadastroAluno.matricula']}">
         <p:outputLabel value="#{aux.matricula}" />
       </p:column>
-      <p:column headerText="Nome">
+      <p:column headerText="#{msg['pages.cadastroAluno.nome']}">
         <p:outputLabel value="#{aux.nome}" />
       </p:column>
-      <p:column headerText="Curso">
+      <p:column headerText="#{msg['pages.cadastroAluno.curso']}">
         <p:outputLabel value="#{aux.curso}" />
       </p:column>
       
