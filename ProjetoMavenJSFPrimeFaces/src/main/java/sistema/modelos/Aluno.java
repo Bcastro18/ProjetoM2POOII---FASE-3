@@ -1,10 +1,13 @@
 package sistema.modelos;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
+@Entity
 public class Aluno {
 
 
+	@Id
 	private int matricula;
 	private String nome;
 	private String curso;
