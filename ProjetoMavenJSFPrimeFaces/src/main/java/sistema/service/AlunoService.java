@@ -12,7 +12,7 @@ import sistema.modelos.Aluno;
 
 public class AlunoService {
 
-	private EntityManagerFactory emf;
+	private static EntityManagerFactory emf;
 	
 	public AlunoService()
 	{
@@ -43,6 +43,32 @@ public class AlunoService {
 		em.close();
 		
 		return alunos;
+		
+	}
+
+	public void alterar(Aluno aluno) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();	
+			aluno = em.merge(aluno);
+		em.getTransaction().commit();	
+	    em.close();
+
+		
+		
+	}
+
+	
+	public void remover(Aluno aluno) {
+
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();	
+			aluno = em.find(Aluno.class,aluno.getMatricula());
+			em.remove(aluno);
+		em.getTransaction().commit();	
+	    em.close();
+
+		
 		
 	}
 	

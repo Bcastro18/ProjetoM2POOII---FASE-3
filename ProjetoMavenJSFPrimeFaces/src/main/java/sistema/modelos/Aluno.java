@@ -62,6 +62,13 @@ public class Aluno implements Serializable{
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Aluno [matricula=" + matricula + ", nome=" + nome + ", curso=" + curso + "]";
+	}
+	
+	
+	
 	
 	
 
