@@ -50,7 +50,7 @@ public class AlunoService {
 
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();	
-			aluno = em.merge(aluno);
+			em.merge(aluno);
 		em.getTransaction().commit();	
 	    em.close();
 
