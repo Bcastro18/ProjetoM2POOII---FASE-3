@@ -24,13 +24,16 @@
       <p:outputLabel value="#{msg['pages.cadastroAluno.curso']}" />
       <p:inputText value="#{alunoManagedBean.aluno.curso}"/>
 	  </p:panelGrid>
-	  <p:commandButton value="#{msg['pages.cadastroAluno.btnSalvar']}" 
+	  <p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" 
 	                 action="#{alunoManagedBean.salvar}"
 	                 update=":formAluno, :formTableAluno:tabelaAluno"
 	                 />
        </h:form>
 
    <br/>
+   
+   
+   <h3><p:outputLabel value="#{msg['pages.cadastroAluno.tableTitle']}" /> </h3>
    <h:form id="formTableAluno">
    
     <p:dataTable

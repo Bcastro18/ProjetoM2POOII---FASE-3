@@ -3,21 +3,12 @@ package sistema.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import sistema.modelos.Aluno;
 
 
-public class AlunoService {
-
-	private static EntityManagerFactory emf;
-	
-	public AlunoService()
-	{
-	      emf = Persistence.createEntityManagerFactory("ProjetoMavenJSFPrimeFaces");
-	}
+public class AlunoService extends Service{
 	
 	public void salvar(Aluno aluno)
 	{
