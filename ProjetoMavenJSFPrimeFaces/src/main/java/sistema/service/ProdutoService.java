@@ -5,65 +5,37 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-
+import sistema.dao.ProdutoDAO;
+import sistema.modelos.Aluno;
 import sistema.modelos.Produto;
 
-public class ProdutoService extends Service{
-	
-	public void salvar(Produto produto)
-	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(produto);
-		em.getTransaction().commit();	
-	    em.close();
-		
+public class ProdutoService {
+
+	ProdutoDAO produtoDAO = new ProdutoDAO();
+
+	public Produto salvar(Produto produto) {
+		produto = produtoDAO.save(produto);
+		produtoDAO.closeEntityManager();
+		return produto;
+
 	}
 
-	
-
-	@SuppressWarnings("unchecked")
-	public List <Produto> getProdutos()
-	{
-		
-		List <Produto > produtos;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select f From Produto f");
-		produtos = q.getResultList();
-		em.close();
-		
-		return produtos;
+	public List<Produto> getProdutos() {
+		List<Produto> list = produtoDAO.getAll(Produto.class);
+		produtoDAO.closeEntityManager();
+		return list;
 	}
-	
-	
+
 	public void alterar(Produto produto) {
-
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.merge(produto);
-		em.getTransaction().commit();	
-	    em.close();
+		produtoDAO.save(produto);
+		produtoDAO.closeEntityManager();
 	}
-	
-	
+
 	public void remover(Produto produto) {
 
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			produto = em.find(Produto.class,produto.getCodigo());
-			em.remove(produto);
-		em.getTransaction().commit();	
-	    em.close();
+		produto = produtoDAO.getById(Produto.class, produto.getCodigo());
+		produtoDAO.remove(produto);
+		produtoDAO.closeEntityManager();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

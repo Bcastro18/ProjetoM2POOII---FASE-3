@@ -5,63 +5,40 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import sistema.dao.AlunoDAO;
 import sistema.modelos.Aluno;
 
 
-public class AlunoService extends Service{
-	
-	public void salvar(Aluno aluno)
+public class AlunoService {
+
+ 	AlunoDAO alunoDAO = new AlunoDAO();
+ 	
+	public Aluno salvar(Aluno aluno)
 	{
-	    
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.persist(aluno);
-		em.getTransaction().commit();	
-	    em.close();
+		aluno = alunoDAO.save(aluno);
+		alunoDAO.closeEntityManager();
+		return aluno;
 		
 	}
 	
-	
-	@SuppressWarnings("unchecked")
 	public List <Aluno> getAlunos()
 	{
-		
-		List <Aluno >alunos;
-		
-		EntityManager em = emf.createEntityManager();
-		Query q = em.createQuery("Select a From Aluno a");
-		alunos = q.getResultList();
-		em.close();
-		
-		return alunos;
-		
+		List <Aluno> list = alunoDAO.getAll(Aluno.class);
+		alunoDAO.closeEntityManager();
+		return list;
 	}
 
 	public void alterar(Aluno aluno) {
-
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			em.merge(aluno);
-		em.getTransaction().commit();	
-	    em.close();
-
-		
-		
+		alunoDAO.save(aluno);
+		alunoDAO.closeEntityManager();
 	}
 
 	
 	public void remover(Aluno aluno) {
-
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();	
-			aluno = em.find(Aluno.class,aluno.getMatricula());
-			em.remove(aluno);
-		em.getTransaction().commit();	
-	    em.close();
-
 		
-		
+		aluno = alunoDAO.getById(Aluno.class, aluno.getMatricula());
+		alunoDAO.remove(aluno);
+		alunoDAO.closeEntityManager();
 	}
-	
 	
 }

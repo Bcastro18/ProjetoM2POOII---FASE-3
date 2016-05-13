@@ -16,18 +16,15 @@ public class AlunoManagedBean {
 	private List<Aluno> alunos;
 	private AlunoService service = new AlunoService();
 
-	
-	//Edição de um aluno na tabela
+	// Edição de um aluno na tabela
 	public void onRowEdit(RowEditEvent event) {
 
 		Aluno a = ((Aluno) event.getObject());
 		service.alterar(a);
 	}
 
-	
-	
 	public void salvar() {
-		service.salvar(aluno);
+		aluno = service.salvar(aluno);
 
 		if (alunos != null)
 			alunos.add(aluno);
@@ -44,7 +41,7 @@ public class AlunoManagedBean {
 		this.aluno = aluno;
 	}
 
-	//Retorna a lista de alunos para a tabela
+	// Retorna a lista de alunos para a tabela
 	public List<Aluno> getAlunos() {
 		if (alunos == null)
 			alunos = service.getAlunos();
