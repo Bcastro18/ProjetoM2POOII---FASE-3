@@ -4,6 +4,9 @@
 		<class>sistema.modelos.Aluno</class>
 		<class>sistema.modelos.Fornecedor</class>
 		<class>sistema.modelos.Produto</class>
+		<class>sistema.modelos.Disciplinas</class>
+		<class>sistema.modelos.Professor</class>
+		<class>sistema.modelos.Conteudos</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="app"/>
