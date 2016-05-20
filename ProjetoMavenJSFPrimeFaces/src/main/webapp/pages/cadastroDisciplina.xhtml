@@ -34,7 +34,7 @@
 
 		</p:panelGrid>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{disciplinaManagedBean.salvar}"
-			update=":formDisciplina, :formTableDisciplinas" />
+			update=":formDisciplinas, :formTableDisciplinas" />
 	</h:form>
 
     <h3><p:outputLabel value="#{msg['pages.cadastroDisciplina.tableTitle']}" /> </h3>
@@ -49,22 +49,10 @@
             <p:ajax event="rowEdit" listener="#{disciplinaManagedBean.onRowEdit}" update="tableDisciplinas"/>
 
 			<p:column headerText="#{msg['pages.cadastroDisciplina.codDisc']}">
-				<h:outputText value="#{prod}" />
+				<h:outputText value="#{prod.codDisc}" />
 			</p:column>
 
-			<p:column headerText="#{msg['pages.cadastroDisciplina.nome']}">
-				<p:cellEditor>
-					<f:facet name="output">
-						<p:outputLabel value="#{prod.nome}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="nome" value="#{prod.nome}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
-
-
+			
 			<p:column headerText="#{msg['pages.cadastroDisciplina.professor.nome']}">
 				<p:cellEditor>
 					<f:facet name="output">

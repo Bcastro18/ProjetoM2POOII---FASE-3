@@ -43,6 +43,13 @@ public class Conteudos implements Serializable {
 	public void setDisciplina(Disciplinas disciplina) {
 		this.disciplina = disciplina;
 	}
+	
+	public void addDisciplina(Disciplinas disciplina)
+	{
+		this.disciplina = disciplina;
+		
+	}
+	
 	/*public ArrayList<Perguntas> getPerguntas() {
 		return perguntas;
 	}

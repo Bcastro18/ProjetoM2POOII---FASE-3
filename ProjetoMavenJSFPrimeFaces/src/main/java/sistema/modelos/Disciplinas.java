@@ -61,6 +61,7 @@ public class Disciplinas implements Serializable  {
 		conteudos.add(conteudo);
 	
 	}
+
 	
 	@Override
 	public int hashCode() {
