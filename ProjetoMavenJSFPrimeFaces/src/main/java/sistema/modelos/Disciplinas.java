@@ -26,6 +26,7 @@ public class Disciplinas implements Serializable  {
 	
 	@ManyToOne
 	private Professor professor;
+	
 	public int getCodDisc() {
 		return codDisc;
 	}

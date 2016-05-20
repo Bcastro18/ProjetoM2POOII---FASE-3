@@ -32,7 +32,7 @@ public class DisciplinasManagedBean {
 	public void salvar(){
 		
 		professor.addDisciplinas(disciplina);
-		disciplina.addProfessor(professor);
+		disciplina.setProfessor(professor);
 		
 		disciplina = discService.salvar(disciplina);
 		

@@ -24,8 +24,8 @@
 			<p:selectOneMenu value="#{conteudoManagedBean.disciplina}"
 				converter="converterDisciplina">
 				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroConteudo.disciplina.msg']}" />
-				<f:selectItems value="#{conteudoManagedBean.disciplinas}" var="aux"
-					itemValue="#{aux}" itemLabel="#{aux.nome}" />
+				<f:selectItems value="#{conteudoManagedBean.disciplinas}" var="disc" 
+      			  itemValue="#{disc}" itemLabel="#{disc.nome}"/>
 			</p:selectOneMenu>
 
 		</p:panelGrid>

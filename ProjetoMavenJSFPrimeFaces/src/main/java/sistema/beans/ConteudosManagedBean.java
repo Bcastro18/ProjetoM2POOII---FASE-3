@@ -20,21 +20,20 @@ import sistema.service.ConteudoService;
 
 import sistema.service.DisciplinaService;
 
-@ManagedBean(name = "conteudosManagedBean")
+@ManagedBean(name = "conteudoManagedBean")
 @ViewScoped
-public class ConteudosManagedBean {
-	
-	//private Perguntas pergunta = new Perguntas();
-	private Conteudos conteudoSelecionado;
+public class ConteudosManagedBean 
+{
 	private Conteudos conteudo = new Conteudos();
+	private List<Conteudos> conteudos;
 	private Disciplinas disciplina;
 	private ConteudoService contService = new ConteudoService();
 	private DisciplinaService discService = new DisciplinaService();
-	private List<Conteudos> conteudos;
 	
 	
-	public void salvar() {
-		disciplina.addConteudos(conteudo);
+	public void salvar() 
+	{
+		disciplina.addConteudos(conteudo);;
 		conteudo.setDisciplina(disciplina);
 
 		conteudo = contService.salvar(conteudo);
@@ -47,49 +46,35 @@ public class ConteudosManagedBean {
 
 	}
 
-	public List<Disciplinas> getDisciplinas() {
+	public List<Disciplinas> getDisciplinas() 
+	{
 		return discService.getDisciplinas();
 
 	}
 
-	public Disciplinas getDisciplina() {
+	public Disciplinas getDisciplina() 
+	{
 		return disciplina;
 	}
-	
 
-	public Conteudos getConteudoSelecionado() {
-		return conteudoSelecionado;
-	}
-
-	public void setConteudoSelecionado(Conteudos conteudoSelecionado) {
-		this.conteudoSelecionado = conteudoSelecionado;
-	}
-
-	public void remove(Conteudos conteudo) {
+	public void remover(Conteudos conteudo) 
+	{
 		contService.remover(conteudo);
 		conteudos.remove(conteudo);
 	}
-	
-	/*public void removePesquisa(Conteudos conteudo) {
-		if (contService.pesquisarPerguntasConteudos(conteudo).size() > 0) {
-			FacesContext context = FacesContext.getCurrentInstance();
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não é possível remover conteudo",
-					"conteudo possui pergunta!"));
-		} else {
-			contService.remover(conteudo);
-			conteudos.remove(conteudo);
-		}
-	}
-*/
-	public void setDisciplinas(Disciplinas disciplinas) {
-		this.disciplina = disciplinas;
+
+	public void setDisciplina(Disciplinas disciplina) 
+	{
+		this.disciplina = disciplina;
 	}
 
-	public Conteudos getConteudo() {
+	public Conteudos getConteudo() 
+	{
 		return conteudo;
 	}
 
-	public void setConteudos(Conteudos conteudo) {
+	public void setConteudo(Conteudos conteudo) 
+	{
 		this.conteudo = conteudo;
 	}
 
@@ -102,23 +87,8 @@ public class ConteudosManagedBean {
 
 	public void onRowEdit(RowEditEvent event) {
 
-		Conteudos p = ((Conteudos) event.getObject());
-		contService.alterar(p);
+		Conteudos c = ((Conteudos) event.getObject());
+		contService.alterar(c);
 	}
-	
-	public DataModel<Conteudos> getConteudosDataModel() {
-		if (conteudos == null)
-			conteudos = contService.getConteudos();
-
-		return new ConteudoDataModel(conteudos);
-	}
-	
-	/*public List<Perguntas> getPerguntasConteudos() {
-		if (conteudoSelecionado != null) {
-			return contService.pesquisarPerguntasConteudos(conteudoSelecionado);
-		} else
-			return null;
-	}
-	*/
 
 }
