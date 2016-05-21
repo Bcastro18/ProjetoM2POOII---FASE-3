@@ -28,7 +28,7 @@ public class DisciplinaDataModel extends ListDataModel<Disciplinas> implements S
 		
 		for(Disciplinas f: servico.getDisciplinas())
 		   if(Integer.parseInt(rowKey) ==  f.getCodDisc())
-			   return f;
+			   return servico.pesquisar(f);
 		
 		return null;
 	}

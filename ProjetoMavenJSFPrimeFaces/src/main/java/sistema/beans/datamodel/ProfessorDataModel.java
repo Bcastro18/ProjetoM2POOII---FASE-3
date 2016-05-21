@@ -29,9 +29,9 @@ private ProfessorService servico = new ProfessorService();
 	public Professor getRowData(String rowKey) {
 		
 		for(Professor f: servico.getProfessores())
-		   if(Integer.parseInt(rowKey) ==  f.getMatricula())
-			   return f;
-		
+		   if(Integer.parseInt(rowKey) ==  f.getMatricula()){
+			   return servico.pesquisar(f);
+		   }		
 		return null;
 	}
 

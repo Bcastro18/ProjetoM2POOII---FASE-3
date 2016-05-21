@@ -1,6 +1,6 @@
 package sistema.modelos;
 
-import java.io.Serializable;
+
 import java.util.ArrayList;
 
 import javax.persistence.Entity;
@@ -10,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Professor implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Professor {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

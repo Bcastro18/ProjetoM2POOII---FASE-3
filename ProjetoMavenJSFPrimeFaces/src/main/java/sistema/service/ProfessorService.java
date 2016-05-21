@@ -37,6 +37,12 @@ public class ProfessorService {
 			professorDAO.remove(professor);
 			professorDAO.closeEntityManager();
 		}
+		public Professor pesquisar(Professor professor) {
+
+			professor = professorDAO.getById(Professor.class, professor.getMatricula());
+			professorDAO.closeEntityManager();
+			return professor;
+		}
 		
 		public List<Disciplinas> pesquisarDisciplinassProfessor(Professor professor) {
 

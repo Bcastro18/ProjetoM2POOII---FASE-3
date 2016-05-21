@@ -5,6 +5,7 @@ import java.util.List;
 import sistema.dao.DisciplinaDAO;
 import sistema.modelos.Conteudos;
 import sistema.modelos.Disciplinas;
+import sistema.modelos.Professor;
 
 public class DisciplinaService {
 	
@@ -34,6 +35,13 @@ public class DisciplinaService {
 		disciplina = disciplinaDAO.getById(Disciplinas.class, disciplina.getCodDisc());
 		disciplinaDAO.remove(disciplina);
 		disciplinaDAO.closeEntityManager();
+	}
+	
+	public Disciplinas pesquisar(Disciplinas disciplina) {
+
+		disciplina = disciplinaDAO.getById(Disciplinas.class, disciplina.getCodDisc());
+		disciplinaDAO.closeEntityManager();
+		return disciplina;
 	}
 	
 	public List<Conteudos> pesquisarConteudosDisciplinas(Disciplinas disciplina) {

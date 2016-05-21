@@ -1,5 +1,6 @@
 package sistema.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,12 @@ import sistema.service.ProfessorService;
 
 @ManagedBean(name = "disciplinaManagedBean")
 @ViewScoped
-public class DisciplinasManagedBean {
+public class DisciplinasManagedBean implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Professor professor;
 	private Disciplinas disciplina = new Disciplinas();
 	private Disciplinas disciplinaSelecionada;
@@ -55,7 +60,7 @@ public class DisciplinasManagedBean {
 		return disciplinaSelecionada;
 	}
 	public void setDisciplinaSelecionada(Disciplinas disciplinaSelecionada) {
-		this.disciplinaSelecionada = disciplinaSelecionada;
+		this.disciplinaSelecionada = discService.pesquisar(disciplinaSelecionada);
 	}
 	public void remove(Disciplinas disciplina) {
 		discService.remover(disciplina);

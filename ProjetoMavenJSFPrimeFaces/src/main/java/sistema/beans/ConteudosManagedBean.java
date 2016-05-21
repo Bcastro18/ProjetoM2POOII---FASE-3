@@ -1,5 +1,6 @@
 package sistema.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -22,8 +23,12 @@ import sistema.service.DisciplinaService;
 
 @ManagedBean(name = "conteudoManagedBean")
 @ViewScoped
-public class ConteudosManagedBean 
+public class ConteudosManagedBean implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Conteudos conteudo = new Conteudos();
 	private List<Conteudos> conteudos;
 	private Disciplinas disciplina;
