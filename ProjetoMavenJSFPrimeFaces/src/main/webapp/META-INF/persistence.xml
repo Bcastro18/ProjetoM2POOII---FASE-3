@@ -7,6 +7,11 @@
 		<class>sistema.modelos.Disciplinas</class>
 		<class>sistema.modelos.Professor</class>
 		<class>sistema.modelos.Conteudos</class>
+		<class>sistema.modelos.Perguntas</class>
+		<class>sistema.modelos.Prova</class>
+		<class>sistema.modelos.VouF</class>
+		<class>sistema.modelos.MultiplaEscolha</class>
+		<class>sistema.modelos.Dissertativa</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBTeste;create=true"/>
 			<property name="javax.persistence.jdbc.user" value="app"/>

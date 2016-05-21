@@ -57,7 +57,7 @@ public class ConteudosManagedBean
 		return disciplina;
 	}
 
-	public void remover(Conteudos conteudo) 
+	public void remove(Conteudos conteudo) 
 	{
 		contService.remover(conteudo);
 		conteudos.remove(conteudo);

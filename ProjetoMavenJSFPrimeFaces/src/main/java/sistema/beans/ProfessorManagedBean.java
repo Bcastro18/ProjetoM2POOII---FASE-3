@@ -35,6 +35,9 @@ public class ProfessorManagedBean {
 
 	public void setProfessorSelecionado(Professor professorSelecionado) {
 		this.professorSelecionado = professorSelecionado;
+		
+		//MUDANÇA AQUI
+		this.professorSelecionado = (Professor) professorService.pesquisarDisciplinassProfessor(professorSelecionado);
 	}
 
 	public void salvar() {
