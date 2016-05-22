@@ -74,13 +74,15 @@
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
-			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}>
-					<p:rowEditor />
+			
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+				<p:rowEditor />
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
 						actionListener="#{conteudoManagedBean.remove(prod)}"
 						update=":formTableConteudos" />
 			</p:column>
+			
 		</p:dataTable>
 	</h:form>
 

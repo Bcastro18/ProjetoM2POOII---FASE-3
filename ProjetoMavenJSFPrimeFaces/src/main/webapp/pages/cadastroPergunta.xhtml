@@ -1,0 +1,102 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastroPergunta.title']}" />
+	</ui:define>
+	
+	<ui:define name="principal">
+	
+	<h1><p:outputLabel value="#{msg['pages.cadastroPergunta.menu']}" /> </h1>
+ 	<h:form id="formPerguntas">
+
+		<p:panelGrid columns="2">
+			
+
+			<p:outputLabel value="#{msg['pages.cadastroPergunta.professor.nome']}" />
+			<p:selectOneMenu value="#{perguntaManagedBean.professor}"
+				converter="converterProfessor">
+				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroPergunta.professor.msg']}" />
+				<f:selectItems value="#{perguntaManagedBean.professores}" var="aux"
+					itemValue="#{aux}" itemLabel="#{aux.nome}" />
+			</p:selectOneMenu>
+
+
+			<p:outputLabel value="#{msg['pages.cadastroPergunta.nome']}" />
+			<p:inputText value="#{perguntaManagedBean.pergunta.nome}" />
+
+
+		</p:panelGrid>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{perguntaManagedBean.salvar}"
+			update=":formPerguntas, :formTablePerguntas" />
+	</h:form>
+
+    <h3><p:outputLabel value="#{msg['pages.cadastroPergunta.tableTitle']}" /> </h3>
+    
+	<h:form id="formTablePerguntas">
+	
+	
+	    
+		<p:dataTable value="#{perguntaManagedBean.perguntas}" var="prod"
+			editable="true" id="tablePerguntas">
+
+            <p:ajax event="rowEdit" listener="#{perguntaManagedBean.onRowEdit}" update="tablePerguntas"/>
+
+			<p:column headerText="#{msg['pages.cadastroPergunta.codDisc']}">
+				<h:outputText value="#{prod.codDisc}" />
+			</p:column>
+
+			
+			<p:column headerText="#{msg['pages.cadastroPergunta.professor.nome']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{prod.professor.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:selectOneMenu value="#{prod.professor}"
+							converter="converterProfessor" style="width:100%">
+							<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroPergunta.professor.msg']}" />
+							<f:selectItems value="#{perguntaManagedBean.professores}"
+								var="aux" itemValue="#{aux}" itemLabel="#{aux.nome}" />
+						</p:selectOneMenu>
+
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column headerText="#{msg['pages.cadastroPergunta.nome']}">
+				  <p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{prod.nome}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="valor" value="#{prod.nome}" style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+
+
+
+					<p:rowEditor />
+					
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{perguntaManagedBean.remove(prod)}"
+						update=":formTablePerguntas" />
+
+
+
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	</ui:define>
+</ui:composition>

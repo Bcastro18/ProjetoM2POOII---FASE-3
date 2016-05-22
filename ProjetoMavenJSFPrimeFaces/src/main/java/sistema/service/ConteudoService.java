@@ -20,6 +20,13 @@ public class ConteudoService {
 		
 	}
 	
+	public Conteudos pesquisar(Conteudos conteudo) {
+
+		conteudo = conteudoDAO.getById(Conteudos.class, conteudo.getCodConteudo());
+		conteudoDAO.closeEntityManager();
+		return conteudo;
+	}
+	
 	public void alterar(Conteudos conteudo){
 		conteudoDAO.save(conteudo);
 		conteudoDAO.closeEntityManager();

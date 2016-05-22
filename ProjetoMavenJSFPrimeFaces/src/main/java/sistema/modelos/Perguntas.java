@@ -79,6 +79,12 @@ public abstract class Perguntas implements Serializable {
 		this.conteudo = conteudo;
 	}
 	private ArrayList<Byte> imagem = new ArrayList<Byte>();
+	
+	public void addConteudo(Conteudos conteudo)
+	{
+		this.conteudo = conteudo;
+		
+	}
 
 
 

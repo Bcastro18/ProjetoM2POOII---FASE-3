@@ -14,6 +14,7 @@ import org.primefaces.event.RowEditEvent;
 
 import sistema.beans.datamodel.DisciplinaDataModel;
 import sistema.modelos.*;
+import sistema.service.ConteudoService;
 import sistema.service.DisciplinaService;
 import sistema.service.ProfessorService;
 
@@ -28,8 +29,10 @@ public class DisciplinasManagedBean implements Serializable {
 	private Professor professor;
 	private Disciplinas disciplina = new Disciplinas();
 	private Disciplinas disciplinaSelecionada;
+	private Conteudos conteudoSelecionado;
 	private ProfessorService profService = new ProfessorService();
 	private DisciplinaService discService = new DisciplinaService();
+	private ConteudoService contService = new ConteudoService();
 	private List<Disciplinas> disciplinas;
 	
 	
@@ -52,6 +55,15 @@ public class DisciplinasManagedBean implements Serializable {
 		return profService.getProfessores();
 
 	}
+	
+	
+	
+	public Conteudos getConteudoSelecionado() {
+		return conteudoSelecionado;
+	}
+	public void setConteudoSelecionado(Conteudos conteudoSelecionado) {
+		this.conteudoSelecionado = contService.pesquisar(conteudoSelecionado);
+	}
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -62,12 +74,9 @@ public class DisciplinasManagedBean implements Serializable {
 	public void setDisciplinaSelecionada(Disciplinas disciplinaSelecionada) {
 		this.disciplinaSelecionada = discService.pesquisar(disciplinaSelecionada);
 	}
-	public void remove(Disciplinas disciplina) {
-		discService.remover(disciplina);
-		disciplinas.remove(disciplina);
-	}
+
 	
-	public void removePesquisa(Disciplinas disciplina) {
+	public void remove(Disciplinas disciplina) {
 		if (discService.pesquisarConteudosDisciplinas(disciplina).size() > 0) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Não é possível remover disciplina",
@@ -76,6 +85,13 @@ public class DisciplinasManagedBean implements Serializable {
 			discService.remover(disciplina);
 			disciplinas.remove(disciplina);
 		}
+	}
+	
+	public List<Conteudos> getConteudosDisciplinas() {
+		if (disciplinaSelecionada != null) {
+			return discService.pesquisarConteudosDisciplinas(disciplinaSelecionada);
+		} else
+			return null;
 	}
 
 	public void setProfessor(Professor professor) {
@@ -95,13 +111,6 @@ public class DisciplinasManagedBean implements Serializable {
 			disciplinas = discService.getDisciplinas();
 
 		return new DisciplinaDataModel(disciplinas);
-	}
-	
-	public List<Conteudos> getConteudosDisciplinas() {
-		if (disciplinaSelecionada != null) {
-			return discService.pesquisarConteudosDisciplinas(disciplinaSelecionada);
-		} else
-			return null;
 	}
 
 	public List<Disciplinas> getDisciplinas(){

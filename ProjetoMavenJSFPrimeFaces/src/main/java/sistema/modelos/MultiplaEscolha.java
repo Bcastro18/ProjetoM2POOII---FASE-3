@@ -11,6 +11,7 @@ public class MultiplaEscolha extends Perguntas {
 	private int numeroItens;
 	private String resposta;
 	private List<String> alternativas = new ArrayList<String>();
+	
 	public int getNumeroItens() {
 		return numeroItens;
 	}
@@ -28,6 +29,11 @@ public class MultiplaEscolha extends Perguntas {
 	}
 	public void setAlternativas(List<String> alternativas) {
 		this.alternativas = alternativas;
+	}
+	
+	public void addAlternativas(String alternativa){
+		alternativas.add(alternativa);
+		
 	}
 	
 	

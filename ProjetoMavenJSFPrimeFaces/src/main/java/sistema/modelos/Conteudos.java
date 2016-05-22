@@ -22,8 +22,9 @@ public class Conteudos implements Serializable {
 	@ManyToOne
 	private Disciplinas disciplina;
 	
-	
 	//private ArrayList<Perguntas> perguntas = new ArrayList<Perguntas>();
+	
+	
 	
 	public int getCodConteudo() {
 		return codConteudo;
@@ -49,8 +50,9 @@ public class Conteudos implements Serializable {
 		this.disciplina = disciplina;
 		
 	}
+	/*
 	
-	/*public ArrayList<Perguntas> getPerguntas() {
+	public ArrayList<Perguntas> getPerguntas() {
 		return perguntas;
 	}
 	public void setPerguntas(ArrayList<Perguntas> perguntas) {

@@ -30,6 +30,16 @@ public class DisciplinaService {
 		disciplinaDAO.closeEntityManager();
 	}
 	
+	public List<Conteudos> pesquisarConteudosDisciplinas(Disciplinas disciplina) {
+
+		List<Conteudos> conteudos;
+
+		disciplina = disciplinaDAO.getById(Disciplinas.class, disciplina.getCodDisc() );
+		conteudos = disciplina.getConteudos();
+
+		return conteudos;
+	}
+	
 	public void remover(Disciplinas disciplina) {
 		
 		disciplina = disciplinaDAO.getById(Disciplinas.class, disciplina.getCodDisc());
@@ -44,14 +54,5 @@ public class DisciplinaService {
 		return disciplina;
 	}
 	
-	public List<Conteudos> pesquisarConteudosDisciplinas(Disciplinas disciplina) {
-
-		List<Conteudos> conteudos;
-		disciplina = disciplinaDAO.getById(Disciplinas.class, disciplina.getCodDisc());
-		conteudos = disciplina.getConteudos();
-		return conteudos;
-	}
-		
-		
 
 }

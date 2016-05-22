@@ -40,26 +40,24 @@
     <h3><p:outputLabel value="#{msg['pages.cadastroDisciplina.tableTitle']}" /> </h3>
     
 	<h:form id="formTableDisciplinas">
+	<p:growl id="growl" showDetail="true" />
 	
-	
-	    
-		<p:dataTable value="#{disciplinaManagedBean.disciplinas}" var="prod"
-			editable="true" id="tableDisciplinas">
+		<p:dataTable value="#{disciplinaManagedBean.disciplinas}" var="f"
+			editable="true" id="tableDisciplinas"
+			selectionMode="single" selection="#{disciplinaManagedBean.disciplinaSelecionada}"  rowKey="#{f.codDisc}"
+			>
 
-            <p:ajax event="rowEdit" listener="#{disciplinaManagedBean.onRowEdit}" update="tableDisciplinas"/>
-
-			<p:column headerText="#{msg['pages.cadastroDisciplina.codDisc']}">
-				<h:outputText value="#{prod.codDisc}" />
-			</p:column>
-
-			
+		   <p:ajax event="rowSelect"   update=":formTableConteudos" />
+           <p:ajax event="rowUnselect" update=":formTableConteudos" />
+           <p:ajax event="rowEdit"     listener="#{disciplinaManagedBean.onRowEdit}"     update=":formTableConteudos" /> 
+		
 			<p:column headerText="#{msg['pages.cadastroDisciplina.professor.nome']}">
 				<p:cellEditor>
 					<f:facet name="output">
-						<p:outputLabel value="#{prod.professor.nome}" />
+						<p:outputLabel value="#{f.professor.nome}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:selectOneMenu value="#{prod.professor}"
+						<p:selectOneMenu value="#{f.professor}"
 							converter="converterProfessor" style="width:100%">
 							<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastroDisciplina.professor.msg']}" />
 							<f:selectItems value="#{disciplinaManagedBean.professores}"
@@ -73,10 +71,10 @@
 			<p:column headerText="#{msg['pages.cadastroDisciplina.nome']}">
 				  <p:cellEditor>
 					<f:facet name="output">
-						<p:outputLabel value="#{prod.nome}" />
+						<p:outputLabel value="#{f.nome}" />
 					</f:facet>
 					<f:facet name="input">
-						<p:inputText id="valor" value="#{prod.nome}" style="width:100%" />
+						<p:inputText id="valor" value="#{f.nome}" style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
 			</p:column>
@@ -89,7 +87,7 @@
 					
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
 						style="text-align:center"
-						actionListener="#{disciplinaManagedBean.remove(prod)}"
+						actionListener="#{disciplinaManagedBean.remove(f)}"
 						update=":formTableDisciplinas" />
 
 
@@ -97,6 +95,25 @@
 			</p:column>
 		</p:dataTable>
 	</h:form>
+	
+	
+	<h:form id="formTableConteudos">
+	    <h3><p:outputLabel value="#{msg['pages.cadastroProfessor.disciplinasProfessor']}: #{disciplinaManagedBean.conteudoSelecionado.nome}" /></h3>
+		<p:dataTable value="#{disciplinaManagedBean.conteudosDisciplinas}" var="prod"	id="tableConteudos">
+
+			<p:column headerText="#{msg['pages.cadastroDisciplina.conteudo.codigo']}">
+						<p:outputLabel value="#{prod.codConteudo}" />
+			</p:column>
+			
+			<p:column headerText="#{msg['pages.cadastroConteudo.conteudo.nome']}">
+				<h:outputText value="#{prod.nome}" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	
+	
 
 	</ui:define>
 </ui:composition>
