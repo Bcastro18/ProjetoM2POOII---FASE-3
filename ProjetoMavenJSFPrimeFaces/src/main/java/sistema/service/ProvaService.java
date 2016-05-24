@@ -3,6 +3,7 @@ package sistema.service;
 import java.util.List;
 
 import sistema.dao.ProvaDAO;
+import sistema.modelos.Professor;
 import sistema.modelos.Prova;
 
 public class ProvaService {
@@ -34,6 +35,12 @@ public class ProvaService {
 		prova = provaDAO.getById(Prova.class, prova.getCodProva());
 		provaDAO.remove(prova);
 		provaDAO.closeEntityManager();
+	}
+	public Prova pesquisar(Prova prova) {
+
+		prova = provaDAO.getById(Prova.class, prova.getCodProva());
+		provaDAO.closeEntityManager();
+		return prova;
 	}
 		
 

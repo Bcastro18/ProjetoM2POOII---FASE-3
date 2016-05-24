@@ -1,36 +1,36 @@
 package sistema.beans;
 
 import sistema.service.ConteudoService;
-import sistema.service.ServicePerguntasGeral;
+import sistema.service.VouFService;
 
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ManagedBean;
 import javax.faces.model.DataModel;
 
 import org.primefaces.event.RowEditEvent;
 
-import sistema.beans.datamodel.DisciplinaDataModel;
+
 import sistema.beans.datamodel.VouFDataModel;
 import sistema.modelos.Conteudos;
-import sistema.modelos.Disciplinas;
-import sistema.modelos.Professor;
+import sistema.modelos.Prova;
 import sistema.modelos.VouF;
-
+@ManagedBean(name="voufManagedBean")
 public class VouFManagedBean {
 
-	private ServicePerguntasGeral servico = new ServicePerguntasGeral();
-	private ConteudoService contService = new ConteudoService();
 	private VouF vouf = new VouF();
+	private VouFService servico = new VouFService();
+	private ConteudoService contService = new ConteudoService();
 	private List<VouF> voufs;
-	private Conteudos conteudo;
-	
+	private Conteudos conteudo = new Conteudos();
+	private Prova prova;
+	private VouF voufSelecionada;
 	
 	
 	public void salvar() {
 		conteudo.addPerguntas(vouf);
-		vouf.setConteudo(conteudo);
+		vouf.addConteudo(conteudo);
+		
 		
 		servico.salvar(vouf);
 		
@@ -40,12 +40,27 @@ public class VouFManagedBean {
 		
 		vouf = new VouF();
 		conteudo = null;
+		
 	}
+		
 	
+	public VouF getVoufSelecionada() {
+		return voufSelecionada;
+	}
+
+
+
+	public void setVoufSelecionada(VouF voufSelecionada) {
+		this.voufSelecionada = voufSelecionada;
+	}
+
+
+
 	public List<Conteudos> getConteudos() {
 		return contService.getConteudos();
 
 	}
+	
 	public Conteudos getConteudo() {
 		return conteudo;
 	}
@@ -69,7 +84,7 @@ public class VouFManagedBean {
 	
 	public DataModel<VouF> getDisciplinasDataModel() {
 		if (voufs == null)
-			voufs = servico.getAs();
+			voufs = servico.getVouFes();
 
 		return new VouFDataModel(voufs);
 	}
@@ -77,7 +92,7 @@ public class VouFManagedBean {
 
 	public List<VouF> getVouFs(){
 		if (voufs == null)
-			voufs = servico.getAs();
+			voufs = servico.getVouFes();
 
 		return voufs;
 	}

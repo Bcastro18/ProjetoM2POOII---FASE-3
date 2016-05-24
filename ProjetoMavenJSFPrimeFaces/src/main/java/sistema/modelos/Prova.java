@@ -67,6 +67,11 @@ public class Prova {
 	public void setPerguntas(ArrayList<Perguntas> perguntas) {
 		this.perguntas = perguntas;
 	}
+	
+	public void addPergunta(Perguntas pergunta){
+		perguntas.add(pergunta);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

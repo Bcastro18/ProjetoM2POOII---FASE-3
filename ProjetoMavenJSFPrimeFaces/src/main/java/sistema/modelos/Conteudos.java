@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -22,7 +23,8 @@ public class Conteudos implements Serializable {
 	@ManyToOne
 	private Disciplinas disciplina;
 	
-	//private ArrayList<Perguntas> perguntas = new ArrayList<Perguntas>();
+	@ManyToMany
+	private ArrayList<Perguntas> perguntas = new ArrayList<Perguntas>();
 	
 	
 	
@@ -50,7 +52,7 @@ public class Conteudos implements Serializable {
 		this.disciplina = disciplina;
 		
 	}
-	/*
+	
 	
 	public ArrayList<Perguntas> getPerguntas() {
 		return perguntas;
@@ -63,7 +65,7 @@ public class Conteudos implements Serializable {
 		perguntas.add(pergunta);
 	
 	}
-	*/
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

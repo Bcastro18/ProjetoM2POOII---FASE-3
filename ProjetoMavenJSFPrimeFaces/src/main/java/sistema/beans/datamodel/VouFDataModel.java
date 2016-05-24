@@ -6,12 +6,12 @@ import javax.faces.model.ListDataModel;
 
 import org.primefaces.model.SelectableDataModel;
 
-import sistema.modelos.VouF;;
-import sistema.service.ServicePerguntasGeral;
+import sistema.modelos.VouF;
+import sistema.service.VouFService;
 
 public class VouFDataModel extends ListDataModel<VouF> implements SelectableDataModel<VouF> {
 
-private ServicePerguntasGeral servico = new ServicePerguntasGeral();
+private VouFService servico = new VouFService();
 	
 	public VouFDataModel()
 	{
@@ -27,7 +27,7 @@ private ServicePerguntasGeral servico = new ServicePerguntasGeral();
 	@Override
 	public VouF getRowData(String rowKey) {
 		
-		for(VouF f: servico.getAs())
+		for(VouF f: servico.getVouFes())
 		   if(Integer.parseInt(rowKey) ==  f.getCodPergunta())
 			   return servico.pesquisar(f);
 		

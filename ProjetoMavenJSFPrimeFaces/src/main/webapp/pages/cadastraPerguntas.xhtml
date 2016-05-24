@@ -1,0 +1,390 @@
+<ui:composition template="templateMenu.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui2="http://java.sun.com/jsf/facelets"
+	xmlns:tm="http://java.sun.com/jsf/composite/terminal/1_0/components">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg['pages.cadastraPerguntas.title']}" />
+	</ui:define>
+	
+
+	<ui:define name="principal">
+	
+	
+    <h1><p:outputLabel value="#{msg['pages.cadastraPerguntas.menu']}"/></h1>
+    
+    
+  
+ 	<h:form id="formDissertativas">
+		<p:panelGrid columns="2">
+			 <p:outputLabel value="#{msg['pages.cadastraPerguntas.enunciado']}" />
+      		 <p:inputText value="#{dissertativaManagedBean.dissertativa.enunciado}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.dificuldade']}" />
+      		 <p:inputText value="#{dissertativaManagedBean.dissertativa.dificuldade}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.tempo_estimado']}" />
+      		 <p:inputText value="#{dissertativaManagedBean.dissertativa.tempo_estimado}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.data_criacao']}" />
+      		 <p:calendar value="#{dissertativaManagedBean.dissertativa.data_criacao}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.resposta']}" />
+      		 <p:inputText value="#{dissertativaManagedBean.dissertativa.resposta}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.conteudo.nome']}" />
+			<p:selectOneMenu value="#{dissertativaManagedBean.conteudo}"
+				converter="converterConteudo">
+				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraPerguntas.conteudo.msg']}" />
+				<f:selectItems value="#{dissertativaManagedBean.conteudos}" var="aux"
+					itemValue="#{aux}" itemLabel="#{aux.nome}" />
+			</p:selectOneMenu>
+
+		</p:panelGrid>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formDissertativas, :formTableDissertativas:tableDissertativas"  action="#{dissertativaManagedBean.salvar}"/>
+	</h:form>
+	
+ 	<h:form id="formMultiplaEscolha">
+		<p:panelGrid columns="2">
+			 <p:outputLabel value="#{msg['pages.cadastraPerguntas.enunciado']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.enunciado}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.dificuldade']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.dificuldade}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.tempo_estimado']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.tempo_estimado}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.data_criacao']}" />
+      		 <p:calendar value="#{multiplaescManagedBean.alternativa.data_criacao}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.resposta']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.resposta}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.conteudo.nome']}" />
+			<p:selectOneMenu value="#{multiplaescManagedBean.conteudo}"
+				converter="converterConteudo">
+				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraPerguntas.conteudo.msg']}" />
+				<f:selectItems value="#{multiplaescManagedBean.conteudos}" var="aux"
+					itemValue="#{aux}" itemLabel="#{aux.nome}" />
+			</p:selectOneMenu>
+
+		</p:panelGrid>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formMultiplaEscolha, :formTableMultiplaEscolha:tableMultiplaEscolhas"  action="#{multiplaescManagedBean.salvar}"/>
+	</h:form>	
+	
+	
+	 	<h:form id="formVouF">
+		<p:panelGrid columns="2">
+			 <p:outputLabel value="#{msg['pages.cadastraPerguntas.enunciado']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.enunciado}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.dificuldade']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.dificuldade}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.tempo_estimado']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.tempo_estimado}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.data_criacao']}" />
+      		 <p:calendar value="#{voufManagedBean.vouF.data_criacao}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.resposta']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.resposta}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.numeroItens']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.numeroItens}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.conteudo.nome']}" />
+			<p:selectOneMenu value="#{voufManagedBean.conteudo}"
+				converter="converterConteudo">
+				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraPerguntas.conteudo.msg']}" />
+				<f:selectItems value="#{voufManagedBean.conteudos}" var="aux"
+					itemValue="#{aux}" itemLabel="#{aux.nome}" />
+			</p:selectOneMenu>
+
+		</p:panelGrid>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formVouF, :formTableVouF:tableVouFs"  action="#{voufManagedBean.salvar}"/>
+	</h:form>
+	
+	
+
+    
+    <h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.tableTitle']}"/></h3>
+	<h:form id="formTableDissertativas">
+	
+	   <p:growl id="growl" showDetail="true" />
+	
+		<p:dataTable value="#{dissertativaManagedBean.dissertativas}" var="f"
+			editable="true" id="tableDissertativas"
+			selectionMode="single" selection="#{dissertativaManagedBean.dissertativaSelecionada}"  rowKey="#{f.codPergunta}"
+			>
+
+		   <p:ajax event="rowSelect"   update=":formTableDissertativas" />
+           <p:ajax event="rowUnselect" update=":formTableDissertativas" />
+           <p:ajax event="rowEdit"     listener="#{dissertativaManagedBean.onRowEdit}"     update=":formTableDissertativas" /> 
+
+			<p:column headerText="#{msg['pages.cadastraPerguntas.codPergunta']}">
+				<h:outputText value="#{f.codPergunta}" />
+			</p:column>
+
+
+			<p:column headerText="#{msg['pages.cadastraPerguntas.enunciado']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.enunciado}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="enunciadoDis" value="#{f.enunciado}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.dificuldade']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.dificuldade}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="dificuldadeDis" value="#{f.dificuldade}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.tempo_estimado']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.tempo_estimado}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="tempo_estimadoDis" value="#{f.tempo_estimado}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.data_criacao']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.data_criacao}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="data_criacaoDis" value="#{f.data_criacao}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="#{msg['pages.cadastraPerguntas.resposta']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.resposta}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="respostaDis" value="#{f.resposta}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+						
+			
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+					<p:rowEditor />
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{dissertativaManagedBean.remove(f)}"
+						update=":formTableDissertativas:tableDissertativas" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<br/>
+	
+	
+	
+	<h:form id="formTableMultiplaEscolha">
+	
+	   <p:growl id="growl" showDetail="true" />
+	
+		<p:dataTable value="#{multiplaescManagedBean.alternativas}" var="f"
+			editable="true" id="tableMultiplaEscolhas"
+			selectionMode="single" selection="#{multiplaescManagedBean.multiplaescSelecionada}"  rowKey="#{f.codPergunta}"
+			>
+
+		   <p:ajax event="rowSelect"   update=":formTableMultiplaEscolha" />
+           <p:ajax event="rowUnselect" update=":formTableMultiplaEscolha" />
+           <p:ajax event="rowEdit"     listener="#{multiplaescManagedBean.onRowEdit}"     update=":formTableMultiplaEscolha" /> 
+
+			<p:column headerText="#{msg['pages.cadastraPerguntas.codPergunta']}">
+				<h:outputText value="#{f.codPergunta}" />
+			</p:column>
+
+
+			<p:column headerText="#{msg['pages.cadastraPerguntas.enunciado']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.enunciado}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="enunciadoM" value="#{f.enunciado}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.dificuldade']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.dificuldade}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="dificuldadeM" value="#{f.dificuldade}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.tempo_estimado']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.tempo_estimado}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="tempo_estimadoM" value="#{f.tempo_estimado}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.data_criacao']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.data_criacao}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="data_criacaoM" value="#{f.data_criacao}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="#{msg['pages.cadastraPerguntas.resposta']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.resposta}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="respostaM" value="#{f.resposta}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+
+			
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+					<p:rowEditor />
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{multiplaescManagedBean.remove(f)}"
+						update=":formTableMultiplaEscolha:tableMultiplaEscolhas" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<br/>
+	
+	
+	<h:form id="formTableVouF">
+	
+	   <p:growl id="growl" showDetail="true" />
+	
+		<p:dataTable value="#{voufManagedBean.vouFs}" var="f"
+			editable="true" id="tableVouFs"
+			selectionMode="single" selection="#{voufManagedBean.voufSelecionada}"  rowKey="#{f.codPergunta}"
+			>
+
+		   <p:ajax event="rowSelect"   update=":formTableVouF" />
+           <p:ajax event="rowUnselect" update=":formTableVouF" />
+           <p:ajax event="rowEdit"     listener="#{voufManagedBean.onRowEdit}"     update=":formTableVouF" /> 
+
+			<p:column headerText="#{msg['pages.cadastraPerguntas.codPergunta']}">
+				<h:outputText value="#{f.codPergunta}" />
+			</p:column>
+
+
+			<p:column headerText="#{msg['pages.cadastraPerguntas.enunciado']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.enunciado}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="enunciadoVouF" value="#{f.enunciado}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.dificuldade']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.dificuldade}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="dificuldadeVouF" value="#{f.dificuldade}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.tempo_estimado']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.tempo_estimado}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="tempo_estimadoVouF" value="#{f.tempo_estimado}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="#{msg['pages.cadastraPerguntas.data_criacao']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.data_criacao}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="data_criacaoVouF" value="#{f.data_criacao}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="#{msg['pages.cadastraPerguntas.resposta']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.resposta}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="respostaVouF" value="#{f.resposta}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="#{msg['pages.cadastraPerguntas.numeroItens']}">
+				<p:cellEditor>
+					<f:facet name="output">
+						<p:outputLabel value="#{f.numeroItens}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText id="data_criacaov" value="#{f.numeroItens}"
+							style="width:100%" />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+
+			
+			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
+					<p:rowEditor />
+					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
+						style="text-align:center"
+						actionListener="#{voufManagedBean.remove(f)}"
+						update=":formTableVouF:tableVouFs" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+	<br/>   
+	
+	
+	
+	
+	
+	
+
+	</ui:define>
+</ui:composition>

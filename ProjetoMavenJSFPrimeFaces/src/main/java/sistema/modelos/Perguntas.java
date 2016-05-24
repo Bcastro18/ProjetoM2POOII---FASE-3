@@ -5,7 +5,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +14,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -32,13 +35,17 @@ public abstract class Perguntas implements Serializable {
 	
 	private int dificuldade;
 	private int tempo_estimado;
+	
+	@Temporal(value = TemporalType.DATE)
 	private Date data_criacao;
 	private String enunciado;
 	@ManyToMany
+	@JoinTable(name="TbContProva", joinColumns={@JoinColumn(name="c_codPerg")})
 	private List<Prova> provas = new ArrayList<Prova>();
 	
-	@ManyToOne
-	private Conteudos conteudo;
+	@ManyToMany
+	@JoinTable(name="TbContPerg", joinColumns={@JoinColumn(name="c_codPerg")})
+	private List<Conteudos> conteudos = new ArrayList<Conteudos>();
 	
 	
 	
@@ -72,21 +79,33 @@ public abstract class Perguntas implements Serializable {
 	public  void setEnunciado(String enunciado) {
 		this.enunciado = enunciado;
 	}
-	public  Conteudos getConteudo() {
-		return conteudo;
+	
+	public List<Conteudos> getConteudos() {
+		return conteudos;
 	}
-	public  void setConteudo(Conteudos conteudo) {
-		this.conteudo = conteudo;
+	public void setConteudos(List<Conteudos> conteudos) {
+		this.conteudos = conteudos;
 	}
+
 	private ArrayList<Byte> imagem = new ArrayList<Byte>();
 	
 	public void addConteudo(Conteudos conteudo)
 	{
-		this.conteudo = conteudo;
+		conteudos.add(conteudo);
 		
 	}
-
-
+		
+	public List<Prova> getProvas() {
+		return provas;
+	}
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
+	}
+	public void addProva(Prova prova)
+	{
+		provas.add(prova);
+		
+	}
 
 	@Override
 	public int hashCode() {

@@ -1,10 +1,12 @@
 package sistema.beans;
 
 
+import sistema.modelos.Perguntas;
 import sistema.modelos.Prova;
 import sistema.service.DisciplinaService;
 import sistema.service.ProvaService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -21,12 +23,13 @@ public class ProvaManagedBean
 	private Prova prova = new Prova();
 	private List<Prova> provas;
 	private ProvaService provaService = new ProvaService();
-	private DisciplinaService discService = new DisciplinaService();
+	private Perguntas pergunta;
+	
 	
 	public void salvar() 
 	{
-		//disciplina.addProva(prova);
-		//prova.setDisciplina(disciplina);
+		pergunta.addProva(prova);
+		prova.addPergunta(pergunta);
 		
 		prova = provaService.salvar(prova);
 
@@ -34,8 +37,21 @@ public class ProvaManagedBean
 			provas.add(prova);
 
 		prova = new Prova();
-		//disciplina = null;
 	}
+	
+	
+
+	public Perguntas getPergunta() {
+		return pergunta;
+	}
+
+
+
+	public void setPergunta(Perguntas pergunta) {
+		this.pergunta = pergunta;
+	}
+
+
 
 	public Prova getProva() {
 		return prova;
