@@ -1,4 +1,6 @@
-package sistema.service;
+package sistema.beans.datamodel;
+
+
 
 import java.util.List;
 
@@ -7,6 +9,7 @@ import javax.faces.model.ListDataModel;
 import org.primefaces.model.SelectableDataModel;
 
 import sistema.modelos.MultiplaEscolha;
+import sistema.service.MultiplaEscolhaService;
 
 public class MultiplaEscolhaDataModel extends ListDataModel<MultiplaEscolha> implements SelectableDataModel<MultiplaEscolha> {
 

@@ -71,6 +71,21 @@ public class Prova {
 	public void addPergunta(Perguntas pergunta){
 		perguntas.add(pergunta);
 	}
+
+	public void addDissertativa(Dissertativa dissertativa)
+	{
+		perguntas.add(dissertativa);
+	}
+	public void addMultiplaEscolha(MultiplaEscolha multiplaEscolha)
+	{
+		perguntas.add(multiplaEscolha);
+	}
+	public void addVerdadeiroFalso(VouF vf)
+	{
+		perguntas.add(vf);
+	}
+	
+	
 	
 	@Override
 	public int hashCode() {

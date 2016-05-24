@@ -27,8 +27,10 @@ public class MultiplaEscolheManagedBean {
 	private MultiplaEscolha multiplaescSelecionada;
 	
 	public void salvar() {
-		conteudo.addPerguntas(alternativa);
+		
+	
 		alternativa.addConteudo(conteudo);
+		conteudo.addPerguntas(alternativa);
 		
 		
 		service.salvar(alternativa);
