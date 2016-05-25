@@ -21,10 +21,25 @@ public class Prova {
 	private String faculdade;
 	private String nome;
 	private Date data_App;
+	private int dificuldadeParamentro;
+	private int quantQuest;
 	
 	@ManyToMany
 	private ArrayList<Perguntas> perguntas = new ArrayList<Perguntas>();
 	
+	
+	public int getQuantQuest() {
+		return quantQuest;
+	}
+	public void setQuantQuest(int quantQuest) {
+		this.quantQuest = quantQuest;
+	}
+	public int getDificuldadeParamentro() {
+		return dificuldadeParamentro;
+	}
+	public void setDificuldadeParamentro(int dificuldadeParamentro) {
+		this.dificuldadeParamentro = dificuldadeParamentro;
+	}
 	public int getCodProva() {
 		return codProva;
 	}

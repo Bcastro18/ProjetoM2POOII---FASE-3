@@ -49,13 +49,9 @@ public class VouFManagedBean {
 		return voufSelecionada;
 	}
 
-
-
 	public void setVoufSelecionada(VouF voufSelecionada) {
 		this.voufSelecionada = voufSelecionada;
 	}
-
-
 
 	public List<Conteudos> getConteudos() {
 		return contService.getConteudos();
@@ -103,7 +99,5 @@ public class VouFManagedBean {
 		VouF p = ((VouF) event.getObject());
 		servico.alterar(p);
 	}
-
-	
 	
 }

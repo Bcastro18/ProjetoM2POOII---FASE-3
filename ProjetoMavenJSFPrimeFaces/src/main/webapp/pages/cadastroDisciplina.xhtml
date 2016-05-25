@@ -98,14 +98,14 @@
 	
 	
 	<h:form id="formTableConteudos">
-	    <h3><p:outputLabel value="#{msg['pages.cadastroProfessor.disciplinasProfessor']}: #{disciplinaManagedBean.conteudoSelecionado.nome}" /></h3>
+	    <h3><p:outputLabel value="#{msg['pages.cadastroDisciplina.disciplinasConteudo']}: #{disciplinaManagedBean.conteudoSelecionado.nome}" /></h3>
 		<p:dataTable value="#{disciplinaManagedBean.conteudosDisciplinas}" var="prod"	id="tableConteudos">
 
 			<p:column headerText="#{msg['pages.cadastroDisciplina.conteudo.codigo']}">
 						<p:outputLabel value="#{prod.codConteudo}" />
 			</p:column>
 			
-			<p:column headerText="#{msg['pages.cadastroConteudo.conteudo.nome']}">
+			<p:column headerText="#{msg['pages.cadastroDisciplina.conteudo.nome']}">
 				<h:outputText value="#{prod.nome}" />
 			</p:column>
 

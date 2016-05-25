@@ -32,16 +32,20 @@
       		 
       		 <p:outputLabel value="#{msg['pages.cadastraProva.data_App']}" />
       		 <p:calendar value="#{provaManagedBean.prova.data_App}"/>
-      		
       		 
-      		 <p:outputLabel value="#{msg['pages.cadastraProva.pergunta.nome']}" />
-			<p:selectManyMenu value="#{provaManagedBean.pergunta}"
-				converter="converterPergunta">
-				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraProva.pergunta.msg']}" />
-				<f:selectItems value="#{provaManagedBean.perguntas}" var="aux"
+      		  <p:outputLabel value="#{msg['pages.cadastraProva.conteudo.nome']}" />
+      		 <p:selectOneMenu value="#{provaManagedBean.conteudo}"
+				converter="converterConteudo">
+				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraProva.conteudo.msg']}" />
+				<f:selectItems value="#{provaManagedBean.conteudos}" var="aux"
 					itemValue="#{aux}" itemLabel="#{aux.nome}" />
-			</p:selectManyMenu>
-
+			</p:selectOneMenu>
+      
+      		<br/>
+      		<br/>
+      		 <p:outputLabel value="#{msg['pages.cadastraProva.quant']}" />
+      		 <p:inputText value="#{provaManagedBean.prova.quantQuest}"/>
+      		 
 		</p:panelGrid>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{provaManagedBean.salvar}"
 			update=":formProva" />
