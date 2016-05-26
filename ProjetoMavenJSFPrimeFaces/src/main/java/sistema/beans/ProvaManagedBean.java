@@ -13,8 +13,12 @@ import sistema.service.ProvaService;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.ReorderEvent;
 import org.primefaces.event.RowEditEvent;
 
 import com.itextpdf.text.Document;
@@ -33,7 +37,7 @@ public class ProvaManagedBean
 	private Perguntas pergunta;
 	private ConteudoService contService = new ConteudoService();
 	private Conteudos conteudo;
-	private pdf pdfprova = new pdf();
+
 	
 	
 	
@@ -110,6 +114,11 @@ public class ProvaManagedBean
 		Prova p = ((Prova) event.getObject());
 		provaService.alterar(p);
 	}
+	
+	public void onRowReorder(ReorderEvent event) {
+        FacesMessage msg = new FacesMessage();
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 	
 	
 }

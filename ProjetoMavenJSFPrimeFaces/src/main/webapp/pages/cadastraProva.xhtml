@@ -48,9 +48,46 @@
       		 
 		</p:panelGrid>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{provaManagedBean.salvar}"
-			update=":formProva" />
+			update=":formProva, :formExibeProva" />
 		
 	</h:form>
+	<br/>
+	
+	<h:form id="formExibeProva">
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <p:dataTable var="aux" value="#{provaManagedBean.prova.perguntas}" draggableRows="true">
+        <p:ajax event="rowReorder" listener="#{provaManagedBean.onRowReorder}" update=":formExibeProva" />
+        
+        <p:column headerText="#{msg['pages.cadastraPerguntas.codPergunta']}">
+            <h:outputText value="#{aux.codPergunta}" />
+        </p:column>
+ 
+        <p:column headerText="#{msg['pages.cadastraPerguntas.enunciado']}">
+            <h:outputText value="#{caux.enunciado}" />
+        </p:column>
+ 
+        <p:column headerText="#{msg['pages.cadastraPerguntas.dificuldade']}">
+            <h:outputText value="#{aux.dificuldade}" />
+        </p:column>
+ 
+        <p:column headerText="#{msg['pages.cadastraPerguntas.tempo_estimado']}">
+            <h:outputText value="#{aux.tempo_estimado}" />
+        </p:column>
+        
+        <p:column headerText="#{msg['pages.cadastraPerguntas.data_criacao']}">
+            <h:outputText value="#{aux.data_criacao}" />
+        </p:column>
+        
+        <p:column headerText="#{msg['pages.cadastraPerguntas.conteudo.nome']}">
+            <h:outputText value="#{aux.conteudo}" />
+        </p:column>
+        
+        <p:column headerText="#{msg['pages.cadastraPerguntas.resposta']}">
+            <h:outputText value="#{aux.resposta}" />
+        </p:column>
+    </p:dataTable>
+</h:form>
 	
 	
 	</ui:define>

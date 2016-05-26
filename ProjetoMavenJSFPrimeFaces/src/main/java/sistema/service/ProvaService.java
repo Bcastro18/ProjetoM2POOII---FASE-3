@@ -24,7 +24,7 @@ public class ProvaService {
 		provaDAO.closeEntityManager();
 		return list;
 	}
-	
+
 	public void alterar(Prova prova){
 		provaDAO.save(prova);
 		provaDAO.closeEntityManager();
