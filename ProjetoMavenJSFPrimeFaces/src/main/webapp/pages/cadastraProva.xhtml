@@ -41,14 +41,15 @@
 					itemValue="#{aux}" itemLabel="#{aux.nome}" />
 			</p:selectOneMenu>
       
-      		<br/>
-      		<br/>
+      		
+      		
       		 <p:outputLabel value="#{msg['pages.cadastraProva.quant']}" />
       		 <p:inputText value="#{provaManagedBean.prova.quantQuest}"/>
       		 
 		</p:panelGrid>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{provaManagedBean.salvar}"
 			update=":formProva" />
+		
 	</h:form>
 	
 	
