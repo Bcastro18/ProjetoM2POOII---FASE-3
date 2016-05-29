@@ -103,15 +103,11 @@
   	<p:panel header="#{msg['pages.cadastraProva.menu']}">
   	<p:panelGrid columns="2" >
   	
-  	<p:outputLabel value="#{msg['pages.cadastraProva.geraProva']}"  />
-         <p:selectOneMenu value="#{pdfManagedBean.prova}" 
-         converter="converterProva" panelStyle="width:180px"
-         effect="fade" var="sm" style="width:191px" filter="true"
-         filterMatchMode="startsWith"  validateClient="true" />
-       
-        	<f:selectItem itemValue="" itemLabel="#{msg['pages.geradorProva.form.sm.prova']}" />
-        
-        	<f:selectItems value="#{pdfManagedBean.provas}" var="p" itemValue="#{p}" itemLabel="#{p.nome}"/>
+  			<p:outputLabel value="#{msg['pages.cadastraProva.geraProva']}"  />
+			<p:selectOneMenu value="#{provaManagedBean.prova}"
+				converter="converterProva">
+        	<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraProva.prova.msg']}" />
+        	<f:selectItems value="#{provaManagedBean.provas}" var="p" itemValue="#{p}" itemLabel="#{p.nome}"/>
   
              <p:column style="width:5%">
                  <h:outputText styleClass="fa fa-file-text-o" />
@@ -120,10 +116,11 @@
              <p:column>
                  <h:outputText value="#{sm.nome}" />
              </p:column>
+             </p:selectOneMenu>
   	</p:panelGrid>
   	</p:panel>
   		<p:commandButton value="Gerar" id="geraPDF"
-  		action="#{pdfManagedBean.gera}" 
+  		action="#{provaManagedBean.gera}" 
   		styleClass="ui-priority-primary" ajax="false" update=":formGerar"/>
   	</h:form>
 	
