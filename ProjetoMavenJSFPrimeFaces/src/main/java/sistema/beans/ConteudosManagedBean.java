@@ -16,10 +16,12 @@ import sistema.beans.datamodel.DisciplinaDataModel;
 import sistema.modelos.Conteudos;
 
 import sistema.modelos.Disciplinas;
+import sistema.modelos.Perguntas;
 //import sistema.modelos.Perguntas;
 import sistema.service.ConteudoService;
 
 import sistema.service.DisciplinaService;
+import sistema.service.PerguntaService;
 
 @ManagedBean(name = "conteudoManagedBean")
 @ViewScoped
@@ -31,8 +33,11 @@ public class ConteudosManagedBean implements Serializable
 	private static final long serialVersionUID = 1L;
 	private Conteudos conteudo = new Conteudos();
 	private List<Conteudos> conteudos;
+	private List<Perguntas> perguntas;
+	private List<Perguntas> perguntasSelec;
 	private Disciplinas disciplina;
 	private ConteudoService contService = new ConteudoService();
+	private PerguntaService pergService = new PerguntaService();
 	private DisciplinaService discService = new DisciplinaService();
 	
 	
@@ -82,12 +87,31 @@ public class ConteudosManagedBean implements Serializable
 	{
 		this.conteudo = conteudo;
 	}
+	
+	public void setPerguntas(List<Perguntas> perguntas) 
+	{
+		this.perguntas = perguntas;
+	}
+
+	public List<Perguntas> getPerguntasSelec() {
+		return perguntasSelec;
+	}
+
+	public void setPerguntasSelec(List<Perguntas> perguntasSelec) {
+		this.perguntasSelec = perguntasSelec;
+	}
 
 	public List<Conteudos> getConteudos() {
 		if (conteudos == null)
 			conteudos = contService.getConteudos();
 
 		return conteudos;
+	}
+	
+	public List<Perguntas> getPerguntas() {
+		if (perguntas == null)	
+			return pergService.getPerguntas();
+		return perguntas;
 	}
 
 	public void onRowEdit(RowEditEvent event) {

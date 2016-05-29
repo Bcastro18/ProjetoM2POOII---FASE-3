@@ -56,8 +56,6 @@ public class DisciplinasManagedBean implements Serializable {
 
 	}
 	
-	
-	
 	public Conteudos getConteudoSelecionado() {
 		return conteudoSelecionado;
 	}

@@ -33,18 +33,28 @@
       		 <p:outputLabel value="#{msg['pages.cadastraProva.data_App']}" />
       		 <p:calendar value="#{provaManagedBean.prova.data_App}"/>
       		 
-      		  <p:outputLabel value="#{msg['pages.cadastraProva.conteudo.nome']}" />
-      		 <p:selectOneMenu value="#{provaManagedBean.conteudo}"
-				converter="converterConteudo">
-				<f:selectItem itemValue="" itemLabel="#{msg['pages.cadastraProva.conteudo.msg']}" />
-				<f:selectItems value="#{provaManagedBean.conteudos}" var="aux"
-					itemValue="#{aux}" itemLabel="#{aux.nome}" />
-			</p:selectOneMenu>
-      
+      		 <p:outputLabel value="#{msg['pages.cadastroProva.form.conteudos']}"  />
+        		<p:selectManyMenu id="perguntas" 
+       			 value="#{provaManagedBean.conteudoSelecionados}" 
+        		 converter="converterConteudo"
+        		 var="sc" filter="true" filterMatchMode="contains" 
+        				showCheckbox="true" panelStyle="width:180px">
+  		 				<f:selectItems value="#{provaManagedBean.conteudos}"  style="width:191px" var="perg" 
+  		 				itemLabel="#{cont.nomeCont}" itemValue="#{cont}" />
+            			<p:column>
+                			<h:outputText style="width:10%" styleClass="fa fa-file-text" />
+            			</p:column>
+      			 		<p:column>
+                			<h:outputText value="#{sc.nome}" />
+            			</p:column>
+        		</p:selectManyMenu>
       		
       		
       		 <p:outputLabel value="#{msg['pages.cadastraProva.quant']}" />
       		 <p:inputText value="#{provaManagedBean.prova.quantQuest}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraProva.dificuldadeParamentro']}" />
+      		 <p:inputText value="#{provaManagedBean.prova.dificuldadeParamentro}"/>
       		 
 		</p:panelGrid>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{provaManagedBean.salvar}"
@@ -88,6 +98,34 @@
         </p:column>
     </p:dataTable>
 </h:form>
+
+<h:form id="formGerar">
+  	<p:panel header="#{msg['pages.cadastraProva.menu']}">
+  	<p:panelGrid columns="2" >
+  	
+  	<p:outputLabel value="#{msg['pages.cadastraProva.geraProva']}"  />
+         <p:selectOneMenu value="#{pdfManagedBean.prova}" 
+         converter="converterProva" panelStyle="width:180px"
+         effect="fade" var="sm" style="width:191px" filter="true"
+         filterMatchMode="startsWith"  validateClient="true" />
+       
+        	<f:selectItem itemValue="" itemLabel="#{msg['pages.geradorProva.form.sm.prova']}" />
+        
+        	<f:selectItems value="#{pdfManagedBean.provas}" var="p" itemValue="#{p}" itemLabel="#{p.nome}"/>
+  
+             <p:column style="width:5%">
+                 <h:outputText styleClass="fa fa-file-text-o" />
+             </p:column>
+  
+             <p:column>
+                 <h:outputText value="#{sm.nome}" />
+             </p:column>
+  	</p:panelGrid>
+  	</p:panel>
+  		<p:commandButton value="Gerar" id="geraPDF"
+  		action="#{pdfManagedBean.gera}" 
+  		styleClass="ui-priority-primary" ajax="false" update=":formGerar"/>
+  	</h:form>
 	
 	
 	</ui:define>
