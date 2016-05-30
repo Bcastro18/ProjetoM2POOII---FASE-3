@@ -97,8 +97,8 @@ public class ProvaManagedBean
         try {
            
         	 PdfWriter.getInstance(document, 
-        		        new FileOutputStream("C:\\prova"+ prova.getCodProva()+" - "+prova.getNome()+".pdf"));
-            document.open();
+        		        new FileOutputStream("C:\\Users\\Bruno\\Documents\\"+ prova.getCodProva()+"-"+prova.getNome()+".pdf"));
+        	 document.open();
            
             for(int i = 0; i < prova.getConteudos().size(); i++)
             {
@@ -118,10 +118,7 @@ public class ProvaManagedBean
          		   +"/"+prova.getData_App().getMonth()+"/"+prova.getData_App().getYear()));
             document.add(new Paragraph("Dificuldade: " + prova.getDificuldadeParamentro()));
             document.add(new Paragraph("Conteudo(s): " + strinConteudos));
-           
-            
-            document.add(Chunk.NEWLINE);
-            
+                       
             for(int i = 0; i < prova.getPerguntas().size(); i++)
             {
          	   		document.add(new Paragraph(""+(i + 1)+") " + prova.getPerguntas().get(i).getEnunciado()));

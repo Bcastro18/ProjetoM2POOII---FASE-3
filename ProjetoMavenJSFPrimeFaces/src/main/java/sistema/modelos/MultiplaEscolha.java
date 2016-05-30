@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 @Entity
 public class MultiplaEscolha extends Perguntas {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int numeroItens;
 	private String resposta;
 	private List<String> alternativas = new ArrayList<String>();
