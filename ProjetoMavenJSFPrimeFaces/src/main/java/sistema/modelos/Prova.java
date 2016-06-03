@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,7 +33,7 @@ public class Prova {
 	private int dificuldadeParamentro;
 	private int quantQuest;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "provas")
 	private ArrayList<Perguntas> perguntas = new ArrayList<Perguntas>();
 	
 	private List<Conteudos> conteudos = new ArrayList<Conteudos>();

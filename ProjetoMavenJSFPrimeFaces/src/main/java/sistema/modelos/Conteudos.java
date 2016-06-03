@@ -23,7 +23,7 @@ public class Conteudos implements Serializable {
 	@ManyToOne
 	private Disciplinas disciplina;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="conteudos")
 	private ArrayList<Perguntas> perguntas = new ArrayList<Perguntas>();
 	
 	

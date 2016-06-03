@@ -20,7 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Perguntas implements Serializable {
 	
 
@@ -40,11 +40,14 @@ public abstract class Perguntas implements Serializable {
 	private Date data_criacao;
 	private String enunciado;
 	@ManyToMany
-	@JoinTable(name="TbContProva", joinColumns={@JoinColumn(name="c_codPerg")})
+	@JoinTable(name="TbPergProva", joinColumns={@JoinColumn(name="c_codPerg")}, inverseJoinColumns = {@JoinColumn(name="c_codProva")})
 	private List<Prova> provas = new ArrayList<Prova>();
+
+	private ArrayList<Byte> imagem = new ArrayList<Byte>();
+	
 	
 	@ManyToMany
-	@JoinTable(name="TbContPerg", joinColumns={@JoinColumn(name="c_codPerg")})
+	@JoinTable(name="TbContPerg", joinColumns={@JoinColumn(name="c_codPergunta")}, inverseJoinColumns = {@JoinColumn(name="c_codConteudo")})
 	private List<Conteudos> conteudos = new ArrayList<Conteudos>();
 	
 	
@@ -87,7 +90,6 @@ public abstract class Perguntas implements Serializable {
 		this.conteudos = conteudos;
 	}
 
-	private ArrayList<Byte> imagem = new ArrayList<Byte>();
 	
 	public void addConteudo(Conteudos conteudo)
 	{
