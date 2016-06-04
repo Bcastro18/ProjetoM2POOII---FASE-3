@@ -4,8 +4,10 @@ package sistema.beans;
 
 
 import sistema.modelos.Conteudos;
+import sistema.modelos.MultiplaEscolha;
 import sistema.modelos.Perguntas;
 import sistema.modelos.Prova;
+import sistema.modelos.VouF;
 import sistema.service.ConteudoService;
 import sistema.service.PerguntaService;
 import sistema.service.ProvaService;
@@ -89,6 +91,7 @@ public class ProvaManagedBean
 
 		prova = new Prova();
 	}
+	@SuppressWarnings("deprecation")
 	public void gera() {
 		
         Document document = new Document();
@@ -116,7 +119,7 @@ public class ProvaManagedBean
             document.add(new Paragraph("Turma: " + prova.getTurma()));
             document.add(new Paragraph("Data da prova: " + prova.getData_App().getDay()
          		   +"/"+prova.getData_App().getMonth()+"/"+prova.getData_App().getYear()));
-            document.add(new Paragraph("Dificuldade: " + prova.getDificuldadeParamentro()));
+            //document.add(new Paragraph("Dificuldade: " + prova.getDificuldadeParamentro()));
             document.add(new Paragraph("Conteudo(s): " + strinConteudos));
                        
             for(int i = 0; i < prova.getPerguntas().size(); i++)
@@ -125,6 +128,31 @@ public class ProvaManagedBean
          	   		document.add(new Paragraph(""+ "Tempo Estimado: "+  prova.getPerguntas().get(i).getTempo_estimado() +", Dificulade: " + 
          	   				prova.getPerguntas().get(i).getDificuldade()));
          	   		document.add( Chunk.NEWLINE );
+         	   		
+         	   if(prova.getPerguntas().get(i) instanceof MultiplaEscolha)
+         	   {
+         	   	MultiplaEscolha me = (MultiplaEscolha)prova.getPerguntas().get(i);
+     
+         		int cont = 1;
+         	   	for(int j = 0; j < 5; j++)
+         		   {
+         			   document.add(new Paragraph(""+ cont + ") "+ me.getAlternativas().get(j)));
+         			   cont++;
+         			   document.add( Chunk.NEWLINE );
+         		   }
+         		  
+         	   }
+         	   else if(prova.getPerguntas().get(i) instanceof VouF)
+         	   {
+         		  VouF vf = (VouF)prova.getPerguntas().get(i);
+           			int cont = 1;
+           			for(int j = 0; j < 5; j++)
+           				{
+           					document.add(new Paragraph(""+ cont + ") "+"(  )" + vf.getAlternativas().get(j)));
+           					cont++;
+           					document.add( Chunk.NEWLINE );
+           				}
+         	   }
          	   
          	   		
          		   document.add(new Paragraph("Resposta:"));

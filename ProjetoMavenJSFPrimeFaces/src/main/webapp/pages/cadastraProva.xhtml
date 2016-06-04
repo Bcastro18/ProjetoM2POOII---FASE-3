@@ -58,7 +58,7 @@
       		 
 		</p:panelGrid>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{provaManagedBean.salvar}"
-			update=":formProva, :formExibeProva" />
+			update=":formProva" />
 		
 	</h:form>
 	<br/>
@@ -94,7 +94,7 @@
         </p:column>
     </p:dataTable>
 </h:form>
-
+<br/>
 <h:form id="formGerar">
   	<p:panel header="#{msg['pages.cadastraProva.menu']}">
   	<p:panelGrid columns="2" >
@@ -115,9 +115,10 @@
              </p:selectOneMenu>
   	</p:panelGrid>
   	</p:panel>
+  	<br/>
   		<p:commandButton value="Gerar" id="geraPDF"
   		action="#{provaManagedBean.gera}" 
-  		styleClass="ui-priority-primary" ajax="false" update=":formGerar"/>
+  		styleClass="ui-priority-primary" ajax="false" update=":formGerar, :formExibeProva"/>
   	</h:form>
 	
 	

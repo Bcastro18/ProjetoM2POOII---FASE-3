@@ -3,6 +3,7 @@ package sistema.beans;
 import sistema.service.ConteudoService;
 import sistema.service.VouFService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -13,6 +14,7 @@ import org.primefaces.event.RowEditEvent;
 
 import sistema.beans.datamodel.VouFDataModel;
 import sistema.modelos.Conteudos;
+import sistema.modelos.MultiplaEscolha;
 import sistema.modelos.Prova;
 import sistema.modelos.VouF;
 @ManagedBean(name="voufManagedBean")
@@ -25,10 +27,12 @@ public class VouFManagedBean {
 	private Conteudos conteudo = new Conteudos();
 	private Prova prova;
 	private VouF voufSelecionada;
+	private List<String> alternativas = new ArrayList<String>();
 	
 	
 	public void salvar() {
 			
+		vouf.addAlternativa();
 		conteudo.addPerguntas(vouf);
 		vouf.addConteudo(conteudo);
 		
@@ -85,7 +89,6 @@ public class VouFManagedBean {
 
 		return new VouFDataModel(voufs);
 	}
-	
 
 	public List<VouF> getVouFs(){
 		if (voufs == null)

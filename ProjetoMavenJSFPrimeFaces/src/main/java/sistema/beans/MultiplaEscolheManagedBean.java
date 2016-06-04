@@ -25,10 +25,11 @@ public class MultiplaEscolheManagedBean {
 	private Conteudos conteudo = new Conteudos();
 	private Prova prova;
 	private MultiplaEscolha multiplaescSelecionada;
+	private List<String> alternativas = new ArrayList<String>();
 	
 	public void salvar() {
-		
-	
+
+		alternativa.addAlternativa();
 		alternativa.addConteudo(conteudo);
 		conteudo.addPerguntas(alternativa);
 		
@@ -40,10 +41,6 @@ public class MultiplaEscolheManagedBean {
 
 		alternativa = new MultiplaEscolha();
 		
-	}
-	
-	public void addAlternativa(String op){
-		alternativa.addAlternativas(op);
 	}
 	
 	public MultiplaEscolha getMultiplaescSelecionada() {

@@ -19,6 +19,9 @@
 		<p:panelGrid columns="2">
 			
 
+			<p:outputLabel value="#{msg['pages.cadastroDisciplina.nome']}" />
+			<p:inputText value="#{disciplinaManagedBean.disciplina.nome}" />
+
 			<p:outputLabel value="#{msg['pages.cadastroDisciplina.professor.nome']}" />
 			<p:selectOneMenu value="#{disciplinaManagedBean.professor}"
 				converter="converterProfessor">
@@ -27,12 +30,8 @@
 					itemValue="#{aux}" itemLabel="#{aux.nome}" />
 			</p:selectOneMenu>
 
-
-			<p:outputLabel value="#{msg['pages.cadastroDisciplina.nome']}" />
-			<p:inputText value="#{disciplinaManagedBean.disciplina.nome}" />
-
-
 		</p:panelGrid>
+		<br/>
 		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" action="#{disciplinaManagedBean.salvar}"
 			update=":formDisciplinas, :formTableDisciplinas" />
 	</h:form>

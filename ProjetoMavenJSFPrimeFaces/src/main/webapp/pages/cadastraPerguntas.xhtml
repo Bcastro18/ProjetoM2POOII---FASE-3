@@ -18,7 +18,7 @@
     <h1><p:outputLabel value="#{msg['pages.cadastraPerguntas.menu']}"/></h1>
     
     
-  
+  <h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.titleFormDissertativa']}" /></h3>
  	<h:form id="formDissertativas">
 		<p:panelGrid columns="2">
 			 <p:outputLabel value="#{msg['pages.cadastraPerguntas.enunciado']}" />
@@ -43,11 +43,13 @@
 			</p:selectOneMenu>
 
 		</p:panelGrid>
-		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formDissertativas, :formTableDissertativas:tableDissertativas"  action="#{dissertativaManagedBean.salvar}"/>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formDissertativas, :formTableDissertativas:tableDissertativas, :formTableMultiplaEscolha:tableMultiplaEscolhas, :formTableVouF:tableVouFs"  action="#{dissertativaManagedBean.salvar}"/>
 	</h:form>
 	<br/>
 	<br/>
 	<br/>
+	
+	<h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.titleFormMult']}" /></h3>
  	<h:form id="formMultiplaEscolha">
 		<p:panelGrid columns="2">
 			 <p:outputLabel value="#{msg['pages.cadastraPerguntas.enunciado']}" />
@@ -58,6 +60,18 @@
       		 <p:inputText value="#{multiplaescManagedBean.alternativa.tempo_estimado}"/>
       		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.data_criacao']}" />
       		 <p:calendar value="#{multiplaescManagedBean.alternativa.data_criacao}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.alterna1']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.alterna1}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.alterna2']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.alterna2}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.alterna3']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.alterna3}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.alterna4']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.alterna4}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.alterna5']}" />
+      		 <p:inputText value="#{multiplaescManagedBean.alternativa.alterna5}"/>
+      		 
       		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.resposta']}" />
       		 <p:inputText value="#{multiplaescManagedBean.alternativa.resposta}"/>
       		 
@@ -70,12 +84,13 @@
 			</p:selectOneMenu>
 
 		</p:panelGrid>
-		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formMultiplaEscolha, :formTableMultiplaEscolha:tableMultiplaEscolhas"  action="#{multiplaescManagedBean.salvar}"/>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formMultiplaEscolha, :formTableDissertativas:tableDissertativas, :formTableMultiplaEscolha:tableMultiplaEscolhas, :formTableVouF:tableVouFs"  action="#{multiplaescManagedBean.salvar}"/>
 	</h:form>	
 	
 	<br/>
 	<br/>
 	<br/>
+	<h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.titleFormVouf']}" /></h3>
 	 	<h:form id="formVouF">
 		<p:panelGrid columns="2">
 			 <p:outputLabel value="#{msg['pages.cadastraPerguntas.enunciado']}" />
@@ -86,10 +101,22 @@
       		 <p:inputText value="#{voufManagedBean.vouF.tempo_estimado}"/>
       		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.data_criacao']}" />
       		 <p:calendar value="#{voufManagedBean.vouF.data_criacao}"/>
-      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.resposta']}" />
-      		 <p:inputText value="#{voufManagedBean.vouF.resposta}"/>
       		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.numeroItens']}" />
       		 <p:inputText value="#{voufManagedBean.vouF.numeroItens}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.vouf1']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.vouf1}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.vouf2']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.vouf2}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.vouf3']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.vouf3}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.vouf4']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.vouf4}"/>
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.vouf5']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.vouf5}"/>
+      		 
+      		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.resposta']}" />
+      		 <p:inputText value="#{voufManagedBean.vouF.resposta}"/>
       		 
       		 <p:outputLabel value="#{msg['pages.cadastraPerguntas.conteudo.nome']}" />
 			<p:selectOneMenu value="#{voufManagedBean.conteudo}"
@@ -100,7 +127,7 @@
 			</p:selectOneMenu>
 
 		</p:panelGrid>
-		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formVouF, :formTableVouF:tableVouFs"  action="#{voufManagedBean.salvar}"/>
+		<p:commandButton value="#{msg['pages.comuns.form.btnSalvar']}" update=":formVouF, :formTableDissertativas:tableDissertativas, :formTableMultiplaEscolha:tableMultiplaEscolhas, :formTableVouF:tableVouFs "  action="#{voufManagedBean.salvar}"/>
 	</h:form>
 	
 	
@@ -108,7 +135,7 @@
 <br/>
 <br/>
     
-    <h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.tableTitle']}"/></h3>
+    <h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.titleFormTableDissertativa']}" /></h3>
 	<h:form id="formTableDissertativas">
 	
 	   <p:growl id="growl" showDetail="true" />
@@ -200,6 +227,7 @@
 	<br/>
 	<br/>
 	
+	<h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.titleFormTableMult']}" /></h3>
 	<h:form id="formTableMultiplaEscolha">
 	
 	   <p:growl id="growl" showDetail="true" />
@@ -291,6 +319,7 @@
 	<br/>
 	<br/>
 	
+	<h3><p:outputLabel value="#{msg['pages.cadastraPerguntas.titleFormTableVouF']}" /></h3>
 	<h:form id="formTableVouF">
 	
 	   <p:growl id="growl" showDetail="true" />
@@ -364,22 +393,8 @@
 							style="width:100%" />
 					</f:facet>
 				</p:cellEditor>
-			</p:column>
-			
-			<p:column headerText="#{msg['pages.cadastraPerguntas.numeroItens']}">
-				<p:cellEditor>
-					<f:facet name="output">
-						<p:outputLabel value="#{f.numeroItens}" />
-					</f:facet>
-					<f:facet name="input">
-						<p:inputText id="data_criacaov" value="#{f.numeroItens}"
-							style="width:100%" />
-					</f:facet>
-				</p:cellEditor>
-			</p:column>
-			
-
-			
+			</p:column>	
+		
 			<p:column style="width:70px" headerText="#{msg['pages.commus.form.opcoes']}">
 					<p:rowEditor />
 					<p:commandLink id="remover" styleClass="ui-icon ui-icon-trash"
