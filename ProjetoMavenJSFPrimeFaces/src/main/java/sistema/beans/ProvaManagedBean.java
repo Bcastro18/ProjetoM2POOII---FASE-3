@@ -125,7 +125,7 @@ public class ProvaManagedBean
             for(int i = 0; i < prova.getPerguntas().size(); i++)
             {
          	   		document.add(new Paragraph(""+(i + 1)+") " + prova.getPerguntas().get(i).getEnunciado()));
-         	   		document.add(new Paragraph(""+ "Tempo Estimado: "+  prova.getPerguntas().get(i).getTempo_estimado() +", Dificulade: " + 
+         	   		document.add(new Paragraph(""+ "Tempo Estimado(min.): "+  prova.getPerguntas().get(i).getTempo_estimado() +", Dificulade: " + 
          	   				prova.getPerguntas().get(i).getDificuldade()));
          	   		document.add( Chunk.NEWLINE );
          	   		
